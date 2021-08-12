@@ -82,8 +82,8 @@ class User(UserMixin, db.Model):
     posts = relationship("BlogPost", back_populates="author")
     # DEFINE THE RELATION WITH COMMENTS TABLE
     comments = relationship("Comment", back_populates="comment_author")
-# db.create_all()
-# db.session.commit()
+db.create_all()
+db.session.commit()
 
 
 login_manager = LoginManager()
