@@ -2,6 +2,7 @@ import datetime as dt
 import config
 import forms
 import os
+import re
 
 from flask import Flask, render_template, redirect, request, flash, abort
 from flask_bootstrap import Bootstrap
@@ -31,7 +32,7 @@ gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=Fa
 
 ##CONNECT TO DB
 # NEW app.config (PostgreSQL)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "postgres:///main.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) or 'sqlite:///main.db'
 # OLD app.config (SQLite) app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
