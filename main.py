@@ -13,11 +13,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_gravatar import Gravatar
 from functools import wraps
-from dotenv import load_dotenv
 
 
-# read key-value pairs from the .env file and store them as environment variables
-load_dotenv()
 
 
 app = Flask(__name__)
