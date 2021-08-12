@@ -13,10 +13,15 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_gravatar import Gravatar
 from functools import wraps
+from dotenv import load_dotenv
+
+
+# read key-value pairs from the .env file and store them as environment variables
+load_dotenv()
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 # OLD app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -29,7 +34,7 @@ gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=Fa
 
 ##CONNECT TO DB
 # NEW app.config (PostgreSQL)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL",  "sqlite:///blog.db")
 # OLD app.config (SQLite) app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
