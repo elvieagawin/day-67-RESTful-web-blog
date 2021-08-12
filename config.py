@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-CLIENT_SECRET_FILE = 'client_secret_755007453906-0clc8nlprjohas353ggcm86qmvpcuucr.apps.googleusercontent.com (1).json'
+CLIENT_SECRET_FILE = 'token_gmail_v1.pickle'
 API_NAME = 'gmail'
 API_VERSION = 'v1'
 SCOPES = ['https://mail.google.com/']
